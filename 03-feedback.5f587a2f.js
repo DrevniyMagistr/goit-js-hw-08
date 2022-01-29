@@ -30,6 +30,6 @@ var i=require("./isObject"),t=require("./now"),r=require("./toNumber"),n="Expect
 },{"./isObject":"u9vI","./now":"pJf5","./toNumber":"iS0Z"}],"Ywd4":[function(require,module,exports) {
 var i=require("./debounce"),e=require("./isObject"),n="Expected a function";function r(r,t,a){var o=!0,u=!0;if("function"!=typeof r)throw new TypeError(n);return e(a)&&(o="leading"in a?!!a.leading:o,u="trailing"in a?!!a.trailing:u),i(r,t,{leading:o,maxWait:t,trailing:u})}module.exports=r;
 },{"./debounce":"CXfR","./isObject":"u9vI"}],"TTyb":[function(require,module,exports) {
-"use strict";var e=t(require("lodash/throttle"));function t(e){return e&&e.__esModule?e:{default:e}}
+"use strict";var e=t(require("lodash/throttle"));function t(e){return e&&e.__esModule?e:{default:e}}const a=document.querySelector(".feedback-form"),r="feedback-form-state",l={email:"",message:""},o=e=>{e.preventDefault(),l&&(localStorage.removeItem(r),console.log(l)),e.currentTarget.reset()},s=e=>{l[e.target.name]=e.target.value,localStorage.setItem(r,JSON.stringify(l))},m=()=>{const e=JSON.parse(localStorage.getItem(r));localStorage.getItem(r)&&(a.email.value=e.email,a.message.value=e.message)};a.addEventListener("submit",o),a.addEventListener("input",(0,e.default)(s),500),m();
 },{"lodash/throttle":"Ywd4"}]},{},["TTyb"], null)
-//# sourceMappingURL=/goit-js-hw-08/03-feedback.571f20d4.js.map
+//# sourceMappingURL=/goit-js-hw-08/03-feedback.5f587a2f.js.map
