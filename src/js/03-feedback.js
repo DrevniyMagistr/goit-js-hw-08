@@ -11,10 +11,10 @@ const formData = {
 
 const onFormSubmit = e => {
   e.preventDefault();
-
-  let dataStorage = localStorage.removeItem(STORAGE_KEY) ?? formData;
-  console.log(dataStorage);
-
+  if (formData) {
+    localStorage.removeItem(STORAGE_KEY);
+  console.log(formData);
+  }
   e.currentTarget.reset();
 };
 
