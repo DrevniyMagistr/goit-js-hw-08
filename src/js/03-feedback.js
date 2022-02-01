@@ -8,9 +8,14 @@ const refs = {
   message: document.querySelector('[name="message"]'),
 };
 
-const formData = {
+let formData = {
   email: '',
   message: '',
+};
+
+const onFormInput = e => {
+  formData[e.target.name] = e.target.value;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 };
 
 const onFormSubmit = e => {
@@ -22,19 +27,13 @@ const onFormSubmit = e => {
   e.currentTarget.reset();
 };
 
-const onFormInput = () => {
-  formData.email = refs.email.value;
-  formData.message = refs.message.value;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
-};
-
 const formOutput = () => {
-  const savedData = localStorage.getItem(STORAGE_KEY);
-  const getData = JSON.parse(savedData);
+  const savedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
-  if (getData !== null) {
-    refs.email.value = getData.email;
-    refs.message.value = getData.message;
+  if (savedData !== null) {
+    formData = savedData;
+    refs.email.value = savedData.email ? savedData.email : refs.email.value;
+    refs.message.value = savedData.message ? savedData.message : refs.message.value;
   }
 };
 
